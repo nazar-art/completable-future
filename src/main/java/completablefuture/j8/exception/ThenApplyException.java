@@ -11,7 +11,7 @@ public class ThenApplyException {
 
     private static final ExecutorService executor = Executors.newFixedThreadPool(10);
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void main(String[] args) {
         QuoteUtil quoteUtil = new QuoteUtil();
 
         try {

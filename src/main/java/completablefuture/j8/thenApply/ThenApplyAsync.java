@@ -1,4 +1,4 @@
-package completablefuture.j8.thenapply;
+package completablefuture.j8.thenApply;
 
 import util.QuoteUtil;
 
@@ -39,8 +39,8 @@ public class ThenApplyAsync {
         long timeout = 2000;
         juniorExecutor.shutdown();
         juniorExecutor.awaitTermination(timeout, TimeUnit.MILLISECONDS);
+
         seniorExecutor.shutdown();
         seniorExecutor.awaitTermination(timeout, TimeUnit.MILLISECONDS);
-
     }
 }

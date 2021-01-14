@@ -1,4 +1,4 @@
-package completablefuture.j8.thenapply;
+package completablefuture.j8.thenApply;
 
 import util.QuoteUtil;
 
@@ -6,9 +6,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ThenApply {
-
-    private static final String MOVIE_NAME = "\nBack to the future";
+public class CallbackHell {
 
     private static final ExecutorService executor = Executors.newFixedThreadPool(10);
 
@@ -18,9 +16,9 @@ public class ThenApply {
 
         CompletableFuture
                 .supplyAsync(quoteUtil::getQuote, executor)
-                .thenApply(result -> result.concat(MOVIE_NAME))
-                .thenApply(String::length)
-                .thenAccept(System.out::println);
+                .thenApply(result ->
+                        CompletableFuture.supplyAsync(() ->
+                                quoteUtil.appendQuote(result)));
 
         executor.shutdown();
     }

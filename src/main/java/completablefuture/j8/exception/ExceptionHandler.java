@@ -11,7 +11,7 @@ public class ExceptionHandler {
 
     private static final ExecutorService executor = Executors.newFixedThreadPool(10);
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void main(String[] args) {
         QuoteUtil quoteUtil = new QuoteUtil();
 
         CompletableFuture
@@ -19,8 +19,7 @@ public class ExceptionHandler {
                 .thenApply(String::length)
                 .handle((result, throwable) -> {
                     if (throwable != null) {
-                        return "No quote available: "
-                                + throwable;
+                        return "No quote available: " + throwable;
                     } else {
                         return result.toString();
                     }
