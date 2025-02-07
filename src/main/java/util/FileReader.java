@@ -1,18 +1,18 @@
 package util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-class FileReader {
+final class FileReader {
 
-    private static final Logger LOGGER = Logger.getLogger(FileReader.class);
+    private static final Logger LOGGER = LogManager.getLogger(FileReader.class);
 
     String readFile(String path) {
 
@@ -21,7 +21,7 @@ class FileReader {
         try (Stream<String> stream = Files.lines(Paths.get(path))) {
             content = stream
                     .map(String::toUpperCase)
-                    .collect(Collectors.toList());
+                    .toList();
         } catch (IOException e) {
             LOGGER.error("The following error has occurred" +
                     " during processing the file: ", e);

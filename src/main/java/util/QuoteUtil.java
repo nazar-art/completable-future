@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.SplittableRandom;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class QuoteUtil {
+public final class QuoteUtil {
 
     private final String folderPath;
     private final FileReader fileReader;
@@ -45,10 +47,10 @@ public class QuoteUtil {
     }
 
     private String initPath() {
-        int quoteNumber = new Random()
+        int quoteNumber = new SplittableRandom()
                 .ints(1, 5)
                 .findFirst()
-                .orElse(1); // use default one
+                .orElse(1);
 
         return folderPath.concat(File.separator + quoteNumber);
     }
