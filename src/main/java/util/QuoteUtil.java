@@ -5,9 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 import java.util.SplittableRandom;
-import java.util.concurrent.ThreadLocalRandom;
 
 public final class QuoteUtil {
 
