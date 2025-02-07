@@ -12,15 +12,13 @@ import java.util.stream.Stream;
 
 class FileReader {
 
-    private static final Logger LOGGER =
-            Logger.getLogger(FileReader.class);
+    private static final Logger LOGGER = Logger.getLogger(FileReader.class);
 
     String readFile(String path) {
 
         List<String> content = new ArrayList<>();
 
-        try (Stream<String> stream = Files
-                .lines(Paths.get(path))) {
+        try (Stream<String> stream = Files.lines(Paths.get(path))) {
             content = stream
                     .map(String::toUpperCase)
                     .collect(Collectors.toList());

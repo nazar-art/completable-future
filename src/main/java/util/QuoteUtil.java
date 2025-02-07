@@ -1,8 +1,10 @@
 package util;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class QuoteUtil {
@@ -13,7 +15,8 @@ public class QuoteUtil {
 
     public QuoteUtil() {
         ClassLoader classLoader = getClass().getClassLoader();
-        folderPath = new File(classLoader.getResource("quotes").getFile()).getPath();
+        URL resource = classLoader.getResource("quotes");
+        folderPath = Objects.requireNonNull(resource, "path must not be null").getPath();
         fileReader = new FileReader();
         String path = initPath();
         quote = fileReader.readFile(path);
@@ -45,9 +48,8 @@ public class QuoteUtil {
         int quoteNumber = new Random()
                 .ints(1, 5)
                 .findFirst()
-                .getAsInt();
+                .orElse(1); // use default one
 
-        return folderPath
-                .concat("\\" + String.valueOf(quoteNumber));
+        return folderPath.concat(File.separator + quoteNumber);
     }
 }
