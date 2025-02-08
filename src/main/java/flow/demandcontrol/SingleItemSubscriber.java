@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SingleItemSubscriber<T> implements Subscriber<T> {
     private final AtomicInteger amountOfMessagesToConsume;
     private Subscription subscription;
-    private List<T> consumedElements = new LinkedList<>();
+    private final List<T> consumedElements = new LinkedList<>();
 
     SingleItemSubscriber(Integer amountOfMessagesToConsume) {
         this.amountOfMessagesToConsume = new AtomicInteger(amountOfMessagesToConsume);

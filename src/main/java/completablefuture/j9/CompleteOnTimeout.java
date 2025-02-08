@@ -13,7 +13,7 @@ public class CompleteOnTimeout {
         CompletableFuture<String> completedFuture =
                 incompleteFuture
                         .completeOnTimeout
-                                ("default value", 5, TimeUnit.SECONDS);
+                                ("default value", 3, TimeUnit.SECONDS);
 
         System.out.println(completedFuture.get());
     }

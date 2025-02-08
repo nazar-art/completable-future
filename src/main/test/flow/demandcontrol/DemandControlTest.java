@@ -23,7 +23,7 @@ public class DemandControlTest {
         items.forEach(publisher::submit);
         publisher.close();
 
-        Thread.sleep(1000);
+        Thread.sleep(300);
         assertEquals(expectedResult.size(), subscriber.getConsumedElements().size());
     }
 }

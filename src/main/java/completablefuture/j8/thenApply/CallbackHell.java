@@ -16,8 +16,10 @@ public class CallbackHell {
 
         CompletableFuture
                 .supplyAsync(quoteUtil::getQuote, executor)
-                .thenApply(result ->
-                        CompletableFuture.supplyAsync(() -> quoteUtil.appendQuote(result)));
+                .thenApply(
+                        result -> CompletableFuture
+                                .supplyAsync(() -> quoteUtil.appendQuote(result))
+                );
 
         executor.shutdown();
     }

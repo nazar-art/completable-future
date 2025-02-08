@@ -17,8 +17,7 @@ public class OrTimeout {
         //incompleteFuture.complete("completed");
 
         CompletableFuture<String> promise = incompleteFuture
-                .thenCombine(releaseYear,
-                        String::concat)
+                .thenCombine(releaseYear, String::concat)
                 .orTimeout(timeout, TimeUnit.SECONDS)
                 .whenComplete((result, error) -> {
                     if (error == null) {

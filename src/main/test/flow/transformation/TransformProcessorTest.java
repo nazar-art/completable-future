@@ -15,8 +15,8 @@ public class TransformProcessorTest {
 
         SubmissionPublisher<Integer> publisher = new SubmissionPublisher<>();
 
-        Function<Integer, String> convertToString = Object::toString;
-        Function<String, String> addQuoteMarks = quote -> "'" + quote + "'";
+        Function<Integer, String> convertToString = String::valueOf;
+        Function<String, String> addQuoteMarks = quote -> String.format("'%s'", quote);
         Function<Integer, String> quote = addQuoteMarks.compose(convertToString);
 
         TransformProcessor<Integer, String> transformProcessor = new TransformProcessor<>(quote);
